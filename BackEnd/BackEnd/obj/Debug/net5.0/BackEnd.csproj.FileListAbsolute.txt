@@ -58,3 +58,4 @@ C:\Users\maxim\Desktop\Cursos\CRUD Angular - NET Core - Entity Framework Core - 
 C:\Users\maxim\Desktop\Cursos\CRUD Angular - NET Core - Entity Framework Core - SqlServer\BackEnd\BackEnd\obj\Debug\net5.0\ref\BackEnd.dll
 C:\Users\maxim\Desktop\Cursos\CRUD Angular - NET Core - Entity Framework Core - SqlServer\BackEnd\BackEnd\obj\Debug\net5.0\BackEnd.pdb
 C:\Users\maxim\Desktop\Cursos\CRUD Angular - NET Core - Entity Framework Core - SqlServer\BackEnd\BackEnd\obj\Debug\net5.0\BackEnd.genruntimeconfig.cache
+C:\Users\maxim\Desktop\Cursos\CRUD Angular - NET Core - Entity Framework Core - SqlServer\BackEnd\BackEnd\obj\Debug\net5.0\BackEnd.csprojAssemblyReference.cache
