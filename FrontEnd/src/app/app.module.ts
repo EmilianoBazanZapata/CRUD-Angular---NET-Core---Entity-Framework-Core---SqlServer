@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { TarjetasComponent } from './components/tarjetas/tarjetas.component';
 import { TarjetaCreditoComponent } from './components/tarjetas/tarjeta-credito/tarjeta-credito.component';
 import { ListtarjetacreditoComponent } from './components/tarjetas/listtarjetacredito/listtarjetacredito.component';
+import { FooterComponent } from './component/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TarjetasComponent,
     TarjetaCreditoComponent,
-    ListtarjetacreditoComponent
+    ListtarjetacreditoComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
