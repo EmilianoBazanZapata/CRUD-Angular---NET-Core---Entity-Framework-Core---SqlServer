@@ -2,15 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup , FormBuilder , Validators} from '@angular/forms';
 import { TrajetaCredito } from 'src/app/models/tarjetacredito';
 import { TarjetaService } from 'src/app/services/tarjeta.service';
+import { ToastrService } from 'ngx-toastr';
+
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-tarjeta-credito',
   templateUrl: './tarjeta-credito.component.html',
   styleUrls: ['./tarjeta-credito.component.css']
 })
+
 export class TarjetaCreditoComponent implements OnInit {
   form:FormGroup;
-  constructor(private FormBuilder:FormBuilder ,private tarjetaService: TarjetaService)
+  closeResult: string;
+  constructor(private FormBuilder:FormBuilder ,
+              private tarjetaService: TarjetaService,
+              private toastr: ToastrService,
+              private modalService: NgbModal)
   {
     this.form = this.FormBuilder.group({
      id:0,
@@ -32,9 +40,38 @@ export class TarjetaCreditoComponent implements OnInit {
     }
     this.tarjetaService.guardarTarjeta(tarjeta).subscribe(data => 
       {
-        console.log('guardado');
+        
         this.form.reset();
       })
   }
+  open(content) {
 
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+
+      this.closeResult = `Closed with: ${result}`;
+
+    }, (reason) => {
+
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+
+    });
+
+  }
+  private getDismissReason(reason: any): string {
+
+    if (reason === ModalDismissReasons.ESC) {
+
+      return 'by pressing ESC';
+
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+
+      return 'by clicking on a backdrop';
+
+    } else {
+
+      return  `with: ${reason}`;
+
+    }
+
+  }
 }

@@ -63,7 +63,22 @@
         </div>
     </div>
     <div class="form-group">
-        <button class="btn btn-success btn-lg btn-block" type="submit"  [disabled]="form.invalid"><i class="fas fa-database"></i> Agregar</button>
+        <button class="btn btn-success btn-lg btn-block" type="submit"  [disabled]="form.invalid" (click)="open(mymodal)"><i class="fas fa-database"></i> Agregar</button>
     </div>
 </form>
 <hr/>
+<ng-template #mymodal let-modal>
+
+  <div class="modal-body">
+
+    La Tarjeta se Agrego Exitosamente!!!
+
+  </div>
+
+  <div class="modal-footer">
+
+    <button type="button" class="btn btn-outline-success" (click)="modal.close('Save click')">Ok</button>
+
+  </div>
+
+</ng-template>
