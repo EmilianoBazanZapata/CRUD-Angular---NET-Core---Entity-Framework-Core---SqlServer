@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-listtarjetacredito',
-  templateUrl: './listtarjetacredito.component.html',
-  styleUrls: ['./listtarjetacredito.component.css']
+  selector: 'app-list-tarjeta-credito',
+  templateUrl: './list-tarjeta-credito.component.html',
+  styleUrls: ['./list-tarjeta-credito.component.css']
 })
 export class ListtarjetacreditoComponent implements OnInit {
 
