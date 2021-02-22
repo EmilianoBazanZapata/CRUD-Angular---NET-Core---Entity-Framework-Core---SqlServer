@@ -40,7 +40,7 @@ export class TarjetaCreditoComponent implements OnInit {
     }
     this.tarjetaService.guardarTarjeta(tarjeta).subscribe(data => 
       {
-        
+        this.tarjetaService.obtenerTarjetas();
         this.form.reset();
       })
   }

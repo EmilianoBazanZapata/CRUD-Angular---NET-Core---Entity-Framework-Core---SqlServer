@@ -9,10 +9,18 @@ import { Observable } from 'rxjs';
 export class TarjetaService {
   MyAppUrl = 'https://localhost:44395/';
   MyApiUrl = 'api/TarjetaCredito/';
-
+   list:TrajetaCredito[];
   constructor(private http:HttpClient) { }
   guardarTarjeta(tarjeta:TrajetaCredito):Observable<TrajetaCredito>
   {
    return this.http.post<TrajetaCredito>(this.MyAppUrl + this.MyApiUrl , tarjeta);
+  }
+
+  obtenerTarjetas()
+  {
+    this.http.get(this.MyAppUrl + this.MyApiUrl).toPromise()
+                  .then(data => {
+                    this.list = data as TrajetaCredito[];
+                  })
   }
 }
