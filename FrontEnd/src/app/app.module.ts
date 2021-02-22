@@ -8,6 +8,7 @@ import { TarjetasComponent } from './components/tarjetas/tarjetas.component';
 import { TarjetaCreditoComponent } from './components/tarjetas/tarjeta-credito/tarjeta-credito.component';
 import { ListtarjetacreditoComponent } from './components/tarjetas/list-tarjeta-credito/list-tarjeta-credito.component';
 import { FooterComponent } from './component/footer/footer.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FooterComponent } from './component/footer/footer.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

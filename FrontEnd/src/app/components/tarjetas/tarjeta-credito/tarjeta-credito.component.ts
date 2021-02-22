@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup , FormBuilder , Validators} from '@angular/forms';
+import { TrajetaCredito } from 'src/app/models/tarjetacredito';
+import { TarjetaService } from 'src/app/services/tarjeta.service';
 
 @Component({
   selector: 'app-tarjeta-credito',
@@ -8,7 +10,7 @@ import {FormGroup , FormBuilder , Validators} from '@angular/forms';
 })
 export class TarjetaCreditoComponent implements OnInit {
   form:FormGroup;
-  constructor(private FormBuilder:FormBuilder)
+  constructor(private FormBuilder:FormBuilder ,private tarjetaService: TarjetaService)
   {
     this.form = this.FormBuilder.group({
      id:0,
@@ -20,8 +22,19 @@ export class TarjetaCreditoComponent implements OnInit {
   }
   ngOnInit(): void {
   }
-guardarTarjeta()
-{
-  console.log(this.form);
-}
+  guardarTarjeta()
+  {
+    const tarjeta: TrajetaCredito={
+      titular:this.form.get('titular').value,
+      numeroTarjeta:this.form.get('numeroTarjeta').value,
+      fechaExpiracion:this.form.get('fechaExpiracion').value,
+      Cvv:this.form.get('cvv').value
+    }
+    this.tarjetaService.guardarTarjeta(tarjeta).subscribe(data => 
+      {
+        console.log('guardado');
+        this.form.reset();
+      })
+  }
+
 }
