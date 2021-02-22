@@ -2,21 +2,30 @@
     <div class="form-group">
         <div class="input-group">
             <div class="input-group-prepend">
-                <div class="input-group-text bg-white">
-                    <i class="fas fa-user-circle"></i>
+                <div class="input-group-text bg-white" 
+                    [class.border-icon-green]="this.form.get('titular').valid"
+                    [class.border-icon-red]="this.form.get('titular').invalid && this.form.get('titular').touched">
+                    <i class="fas fa-user-circle alert-succes"
+                    [class.green-icon]="this.form.get('titular').valid"
+                    [class.red-icon]="this.form.get('titular').invalid && this.form.get('titular').touched"></i>
                 </div>
             </div>
-            <input type="text" placeholder="Titular" class="form-control" formControlName="titular">
+            <input type="text" placeholder="Titular" class="form-control" formControlName="titular" maxlength="30">
         </div>
     </div>
     <div class="form-group">
         <div class="input-group">
             <div class="input-group-prepend">
-                <div class="input-group-text bg-white">
-                    <i class="fas fa-credit-card"></i>
+                <div class="input-group-text bg-white" 
+                    [class.border-icon-green]="this.form.get('numeroTarjeta').valid"
+                    [class.border-icon-red]="this.form.get('numeroTarjeta').invalid && this.form.get('numeroTarjeta').touched">
+                    <i class="fas fa-credit-card"
+                    [class.green-icon]="this.form.get('numeroTarjeta').valid"
+                    [class.red-icon]="this.form.get('numeroTarjeta').invalid && this.form.get('numeroTarjeta').touched">
+                    </i>
                 </div>
             </div>
-            <input type="text" placeholder="N° de Tarjeta" class="form-control" formControlName="numeroTarjeta">
+            <input type="text" placeholder="N° de Tarjeta" class="form-control" formControlName="numeroTarjeta" maxlength="16" minlength="16">
         </div>
     </div>
     <div class="row">
@@ -24,11 +33,15 @@
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <div class="input-group-text bg-white">
-                            <i class="fas fa-calendar-alt"></i>
+                        <div class="input-group-text bg-white"  
+                        [class.border-icon-green]="this.form.get('fechaExpiracion').valid"
+                        [class.border-icon-red]="this.form.get('fechaExpiracion').invalid && this.form.get('fechaExpiracion').touched">
+                            <i class="fas fa-calendar-alt"
+                            [class.green-icon]="this.form.get('fechaExpiracion').valid"
+                            [class.red-icon]="this.form.get('fechaExpiracion').invalid && this.form.get('fechaExpiracion').touched"></i>
                         </div>
                     </div>
-                    <input type="text" placeholder="MM/YY" class="form-control" formControlName="fechaExpiracion">
+                    <input type="text" placeholder="MM/YY" class="form-control" formControlName="fechaExpiracion" maxlength="5" minlength="5">
                 </div>
             </div>
         </div>
@@ -36,17 +49,21 @@
             <div class="form-group">
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <div class="input-group-text bg-white">
-                            <i class="fas fa-key"></i>
+                        <div class="input-group-text bg-white" 
+                            [class.border-icon-green]="this.form.get('cvv').valid"
+                            [class.border-icon-red]="this.form.get('cvv').invalid && this.form.get('cvv').touched">
+                            <i class="fas fa-key"
+                            [class.green-icon]="this.form.get('cvv').valid"
+                            [class.red-icon]="this.form.get('cvv').invalid && this.form.get('cvv').touched"></i>
                         </div>
                     </div>
-                    <input type="text" placeholder="Cvv" class="form-control" formControlName="cvv">
+                    <input type="text" placeholder="cvv" class="form-control" formControlName="cvv" maxlength="3" minlength="3">
                 </div>
             </div>
         </div>
     </div>
     <div class="form-group">
-        <button class="btn btn-success btn-lg btn-block" type="submit">Agregar</button>
+        <button class="btn btn-success btn-lg btn-block" type="submit"  [disabled]="form.invalid"><i class="fas fa-database"></i> Agregar</button>
     </div>
 </form>
 <hr/>
