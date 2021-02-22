@@ -12,11 +12,11 @@ namespace BackEnd.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TarjetaCreditoesController : ControllerBase
+    public class TarjetaCreditoController : ControllerBase
     {
         private readonly AplicationDbContext _context;
 
-        public TarjetaCreditoesController(AplicationDbContext context)
+        public TarjetaCreditoController(AplicationDbContext context)
         {
             _context = context;
         }

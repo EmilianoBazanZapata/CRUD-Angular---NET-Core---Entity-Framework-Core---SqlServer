@@ -22,7 +22,7 @@ namespace BackEnd.Models
 
         [Required]
         [Column(TypeName = "varchar(5)")]
-        public string nFechaExpiracio { get; set; }
+        public string FechaExpiracion { get; set; }
 
         [Required]
         [Column(TypeName = "varchar(3)")]

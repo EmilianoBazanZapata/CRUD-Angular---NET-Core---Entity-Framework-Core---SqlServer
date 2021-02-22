@@ -29,6 +29,10 @@ namespace BackEnd.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(3)");
 
+                    b.Property<string>("FechaExpiracion")
+                        .IsRequired()
+                        .HasColumnType("varchar(5)");
+
                     b.Property<string>("NumeroTarjeta")
                         .IsRequired()
                         .HasColumnType("varchar(16)");
@@ -36,10 +40,6 @@ namespace BackEnd.Migrations
                     b.Property<string>("Titular")
                         .IsRequired()
                         .HasColumnType("varchar(100)");
-
-                    b.Property<string>("nFechaExpiracio")
-                        .IsRequired()
-                        .HasColumnType("varchar(5)");
 
                     b.HasKey("Id");
 

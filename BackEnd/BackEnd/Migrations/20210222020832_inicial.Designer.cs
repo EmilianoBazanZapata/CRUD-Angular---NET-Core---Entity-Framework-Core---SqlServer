@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackEnd.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    [Migration("20210221203612_Inicial")]
-    partial class Inicial
+    [Migration("20210222020832_inicial")]
+    partial class inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,6 +31,10 @@ namespace BackEnd.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(3)");
 
+                    b.Property<string>("FechaExpiracion")
+                        .IsRequired()
+                        .HasColumnType("varchar(5)");
+
                     b.Property<string>("NumeroTarjeta")
                         .IsRequired()
                         .HasColumnType("varchar(16)");
@@ -38,10 +42,6 @@ namespace BackEnd.Migrations
                     b.Property<string>("Titular")
                         .IsRequired()
                         .HasColumnType("varchar(100)");
-
-                    b.Property<string>("nFechaExpiracio")
-                        .IsRequired()
-                        .HasColumnType("varchar(5)");
 
                     b.HasKey("Id");
 

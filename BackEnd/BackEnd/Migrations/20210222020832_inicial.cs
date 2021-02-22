@@ -2,7 +2,7 @@
 
 namespace BackEnd.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,7 @@ namespace BackEnd.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Titular = table.Column<string>(type: "varchar(100)", nullable: false),
                     NumeroTarjeta = table.Column<string>(type: "varchar(16)", nullable: false),
-                    nFechaExpiracio = table.Column<string>(type: "varchar(5)", nullable: false),
+                    FechaExpiracion = table.Column<string>(type: "varchar(5)", nullable: false),
                     Cvv = table.Column<string>(type: "varchar(3)", nullable: false)
                 },
                 constraints: table =>
