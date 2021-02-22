@@ -28,6 +28,10 @@ namespace BackEnd
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DevConection")));
+            services.AddCors(options => options.AddPolicy("AllowApp",
+                             builder => builder.AllowAnyOrigin().
+                                                AllowAnyHeader().
+                                                AllowAnyMethod()));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -44,6 +48,7 @@ namespace BackEnd
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BackEnd v1"));
             }
+            app.UseCors("AllowApp");
 
             app.UseHttpsRedirection();
 
