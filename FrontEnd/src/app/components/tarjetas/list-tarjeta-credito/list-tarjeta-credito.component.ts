@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { TarjetaService } from 'src/app/services/tarjeta.service';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-list-tarjeta-credito',
@@ -10,8 +11,9 @@ import { TarjetaService } from 'src/app/services/tarjeta.service';
 export class ListtarjetacreditoComponent implements OnInit {
 
   constructor(public tarjetaService :TarjetaService,
-                     public toastr: ToastrService) { }
-
+                     public toastr: ToastrService,
+                     private modalService: NgbModal) { }
+                     closeResult: string;
   ngOnInit(): void {
     this.tarjetaService.obtenerTarjetas();
   }
@@ -24,4 +26,35 @@ export class ListtarjetacreditoComponent implements OnInit {
       });
     }
   }
+  open(content) {
+
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+
+      this.closeResult = `Closed with: ${result}`;
+
+    }, (reason) => {
+
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+
+    });
+
+  }
+  private getDismissReason(reason: any): string {
+
+    if (reason === ModalDismissReasons.ESC) {
+
+      return 'by pressing ESC';
+
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+
+      return 'by clicking on a backdrop';
+
+    } else {
+
+      return  `with: ${reason}`;
+
+    }
+
+  }
 }
+
