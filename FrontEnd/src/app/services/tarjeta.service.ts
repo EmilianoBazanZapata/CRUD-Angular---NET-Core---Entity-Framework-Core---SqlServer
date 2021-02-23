@@ -11,6 +11,10 @@ export class TarjetaService {
   MyApiUrl = 'api/TarjetaCredito/';
    list:TrajetaCredito[];
   constructor(private http:HttpClient) { }
+  eliminarTarjeta(id:number):Observable<TrajetaCredito>
+  {
+    return this.http.delete<TrajetaCredito>(this.MyAppUrl + this.MyApiUrl + id);
+  }
   guardarTarjeta(tarjeta:TrajetaCredito):Observable<TrajetaCredito>
   {
    return this.http.post<TrajetaCredito>(this.MyAppUrl + this.MyApiUrl , tarjeta);

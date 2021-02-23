@@ -17,7 +17,7 @@ export class TarjetaCreditoComponent implements OnInit {
   closeResult: string;
   constructor(private FormBuilder:FormBuilder ,
               private tarjetaService: TarjetaService,
-              private toastr: ToastrService,
+              public toastr: ToastrService,
               private modalService: NgbModal)
   {
     this.form = this.FormBuilder.group({
