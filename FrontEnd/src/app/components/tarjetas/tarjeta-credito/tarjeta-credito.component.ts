@@ -17,6 +17,9 @@ export class TarjetaCreditoComponent implements OnInit , OnDestroy {
   form:FormGroup;
   suscription:Subscription
   closeResult: string;
+  tarjeta:TrajetaCredito;
+  idTarjeta = 0;
+  cvv = 0;
   constructor(private FormBuilder:FormBuilder ,
               private tarjetaService: TarjetaService,
               public toastr: ToastrService,
@@ -34,13 +37,32 @@ export class TarjetaCreditoComponent implements OnInit , OnDestroy {
     this.suscription = this.tarjetaService.obtenerTajeta$().subscribe(data =>
       {
         console.log(data);
-      })
+        this.tarjeta = data;
+        this.form.patchValue({
+          titular: this.tarjeta.titular,
+          numeroTarjeta : this.tarjeta.numeroTarjeta,
+          fechaExpiracion : this.tarjeta.fechaExpiracion,
+          cvv: this.tarjeta.Cvv
+        });
+        this.idTarjeta = this.tarjeta.id;
+      });
   }
   ngOnDestroy()
   {
     this.suscription.unsubscribe();
   }
   guardarTarjeta()
+  {
+    if(this.idTarjeta ===0)
+    {
+      this.agregar();
+    }
+    else
+    {
+      this.editar();
+    }
+  }
+  agregar()
   {
     const tarjeta: TrajetaCredito={
       titular:this.form.get('titular').value,
@@ -53,6 +75,22 @@ export class TarjetaCreditoComponent implements OnInit , OnDestroy {
         this.tarjetaService.obtenerTarjetas();
         this.form.reset();
       })
+  }
+  editar()
+  {
+    const tarjeta: TrajetaCredito={
+      id: this.idTarjeta,
+      titular:this.form.get('titular').value,
+      numeroTarjeta:this.form.get('numeroTarjeta').value,
+      fechaExpiracion:this.form.get('fechaExpiracion').value,
+      Cvv:this.form.get('cvv').value
+    };
+    this.tarjetaService.actualizarTarjeta(this.idTarjeta,tarjeta).subscribe(data=>{
+        this.toastr.info('se actualizo');
+        this.tarjetaService.obtenerTarjetas();
+        this.form.reset();
+        this.idTarjeta = 0;
+    })
   }
   open(content) {
 

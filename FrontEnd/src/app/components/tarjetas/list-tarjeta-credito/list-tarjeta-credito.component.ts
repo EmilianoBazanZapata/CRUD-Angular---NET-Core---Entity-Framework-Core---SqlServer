@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { TarjetaService } from 'src/app/services/tarjeta.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
+
 @Component({
   selector: 'app-list-tarjeta-credito',
   templateUrl: './list-tarjeta-credito.component.html',
@@ -28,10 +29,11 @@ export class ListtarjetacreditoComponent implements OnInit {
       });
     }
   }
-  editartarjeta(tarjeta)
+  editar(tarjeta)
   {
     this.tarjetaService.actualizar(tarjeta);
   }
+  
   open(content) {
     if(this.eliminado === true)
     {

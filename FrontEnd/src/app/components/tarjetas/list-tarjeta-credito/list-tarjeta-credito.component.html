@@ -11,8 +11,9 @@
             <td>{{tarjeta.titular}}</td>
             <td>{{tarjeta.numeroTarjeta}}</td>
             <td>{{tarjeta.fechaExpiracion}}</td>
+            <td>{{tarjeta.cvv}}</td>
             <td>
-                <i (click)="editartarjeta(tarjeta)"class="fas fa-edit fa-lg text-info" style="cursor: pointer;"></i>
+                <i (click)="editar(tarjeta)"class="fas fa-edit fa-lg text-info" style="cursor: pointer;"></i>
             </td>
             <td>
                 <i (click)="eliminarTarjeta(tarjeta.id)" (click)="open(mymodal)" class="fas fa-trash-alt fa-lg text-danger" style="cursor: pointer;"></i>
