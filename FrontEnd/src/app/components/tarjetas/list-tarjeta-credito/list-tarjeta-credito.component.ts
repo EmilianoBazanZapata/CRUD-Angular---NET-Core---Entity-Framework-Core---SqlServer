@@ -14,6 +14,7 @@ export class ListtarjetacreditoComponent implements OnInit {
                      public toastr: ToastrService,
                      private modalService: NgbModal) { }
                      closeResult: string;
+                     eliminado: boolean = false;
   ngOnInit(): void {
     this.tarjetaService.obtenerTarjetas();
   }
@@ -21,6 +22,7 @@ export class ListtarjetacreditoComponent implements OnInit {
   {
     if(confirm('Esta seguro de eliminar el registro ? '))
     {
+      this.eliminado = true;
       this.tarjetaService.eliminarTarjeta(id).subscribe(data =>{
        this.tarjetaService.obtenerTarjetas(); 
       });
@@ -31,17 +33,18 @@ export class ListtarjetacreditoComponent implements OnInit {
     this.tarjetaService.actualizar(tarjeta);
   }
   open(content) {
+    if(this.eliminado === true)
+    {
+      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
 
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-
-      this.closeResult = `Closed with: ${result}`;
-
-    }, (reason) => {
-
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-
-    });
-
+        this.closeResult = `Closed with: ${result}`;
+  
+      }, (reason) => {
+  
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  
+      });
+    }
   }
   private getDismissReason(reason: any): string {
 
