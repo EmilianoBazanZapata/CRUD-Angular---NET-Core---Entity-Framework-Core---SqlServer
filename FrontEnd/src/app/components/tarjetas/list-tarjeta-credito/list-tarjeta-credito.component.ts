@@ -26,6 +26,10 @@ export class ListtarjetacreditoComponent implements OnInit {
       });
     }
   }
+  editartarjeta(tarjeta)
+  {
+    this.tarjetaService.actualizar(tarjeta);
+  }
   open(content) {
 
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {

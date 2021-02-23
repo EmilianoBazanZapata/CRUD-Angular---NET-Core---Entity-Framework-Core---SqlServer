@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {FormGroup , FormBuilder , Validators} from '@angular/forms';
 import { TrajetaCredito } from 'src/app/models/tarjetacredito';
 import { TarjetaService } from 'src/app/services/tarjeta.service';
 import { ToastrService } from 'ngx-toastr';
 
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-tarjeta-credito',
@@ -12,8 +13,9 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./tarjeta-credito.component.css']
 })
 
-export class TarjetaCreditoComponent implements OnInit {
+export class TarjetaCreditoComponent implements OnInit , OnDestroy {
   form:FormGroup;
+  suscription:Subscription
   closeResult: string;
   constructor(private FormBuilder:FormBuilder ,
               private tarjetaService: TarjetaService,
@@ -29,6 +31,14 @@ export class TarjetaCreditoComponent implements OnInit {
     })
   }
   ngOnInit(): void {
+    this.suscription = this.tarjetaService.obtenerTajeta$().subscribe(data =>
+      {
+        console.log(data);
+      })
+  }
+  ngOnDestroy()
+  {
+    this.suscription.unsubscribe();
   }
   guardarTarjeta()
   {
